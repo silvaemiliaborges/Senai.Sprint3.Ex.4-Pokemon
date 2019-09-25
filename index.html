@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Pokemon</title>
+    <body>
+        <div class="container" id="conteudoPricipal">
+            <h1 class="conteudoPricipla-Busca">
+                    Qual é o seu Pokemon?
+            </h1>
+            <form>
+            <div class="container">
+              <input type="text" class="class_pokemon" id="input_pokemon" placeholder="Digite aqui..."/>
+              <button id="btn_procurar" class="conteudoPrincipal-btn conteudoPrincipal-btn-cadastro">Procurar</button>
+            </div>
+        </form>
+    </body>
+    <script>
+        const input_pokemon = document.querySelector('#input_pokemon');
+        const btn_procurar = document.querySelector('#btn_procurar');
+
+        btn_procurar.addEventListener('click', construirTabela);
+
+        window.onload = function (){
+
+            let url = 'https://pokeapi.co/api/v2/pokemon';
+
+            fetch(url)
+            .then(respota => respota.json())
+            .then(data => construirTabela(data))
+            .catch(erro => console.log(erro));
+            
+            function construirTabela() {
+            // TODO: CAPTURAR OQ O USUARIO DIGITOU E PROCURAR COM O LINK(FETCHS)
+                pokes.forEach(element => {
+                    const tr = document.createElement('tr');
+                    const td_id = documento.createElement('td');
+                    const td_nome = documento.createElement('td');
+
+                    td_id.textContent = element.idPoke;
+                    td_nome.textContent = element.nome;
+
+                    tr.appendChild(td_id);
+                    tr.appendChild(td_nome);
+                    tabela.appendChild(tr);
+                });
+            }
+            // let xhr = new XMLHttpRequest();
+
+            // xhr.onload = function(){
+            //     if(xhr.readyState == 4 && xhr.status == 200){
+            //         console.log('Man esse já foi!');
+            //     }else{
+            //         console.log('Hiii tente novamente mais tarde!');
+            //     }
+            //     }
+            // }
+
+    </script>
+</body>
+</html>
